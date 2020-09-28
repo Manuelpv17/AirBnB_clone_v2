@@ -31,6 +31,7 @@ class DBStorage():
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
+        """ all """
         dict_objects = {}
         if cls is not None:
             for query_obj in self.__session.query(cls).all():
@@ -39,7 +40,7 @@ class DBStorage():
                 dict_objects[key] = query_obj
         else:
             all_classes = [State,
-                           City]
+                           City, User]
             for clss in all_classes:
                 for query_obj in self.__session.query(clss).all():
                     key = "{}.{}".format(
